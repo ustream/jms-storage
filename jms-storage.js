@@ -4,8 +4,6 @@
 
 function storage (cmd, source, branch, data, next) {
 
-	console.log(	storage.settings.engine);
-
 	console.log('storage method', cmd, source, branch, data);
 
 
@@ -21,14 +19,13 @@ function storage (cmd, source, branch, data, next) {
 		}
 	}
 
+	storage.engine[cmd](source, branch, data, next)
 
-
-
-	next(null, +new Date())
 
 }
 
 storage.settings = {
+	engine: 'none'
 }
 
 
