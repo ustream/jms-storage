@@ -1,0 +1,26 @@
+{
+  "name": "jms-storage",
+  "main": "./jms-storage.js",
+  "version": "0.0.1",
+  "description": "Storage engine wrapper for JMS",
+  "author": "nec@ustream.tv",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "latest"
+  },
+  "devDependencies": {
+    "grunt-release": "latest",
+    "grunt": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-repos.ustream-adm.in/jms/jms-storage"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "publishConfig": {
+    "registry": "http://sjc-npm-cache.ustream.tv:4873",
+    "username": "ustream"
+  }
+}
