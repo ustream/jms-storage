@@ -10,8 +10,6 @@
  */
 function storage (cmd, source, branch, data, next) {
 
-	console.log('storage method', cmd, source, branch, data);
-
 	if (!storage.engine) {
 		try {
 			storage.engine = require('./lib/' + storage.settings.engine)(this)
