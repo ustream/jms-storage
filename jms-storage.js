@@ -1,17 +1,18 @@
-
-
-
-
+/**
+ *
+ * @param cmd
+ * @param source
+ * @param branch
+ * @param data
+ * @param next
+ *
+ * @returns {storage}
+ */
 function storage (cmd, source, branch, data, next) {
 
 	console.log('storage method', cmd, source, branch, data);
 
-
-
-
 	if (!storage.engine) {
-		// init engine
-
 		try {
 			storage.engine = require('./lib/' + storage.settings.engine)(this)
 		} catch (e) {
@@ -19,51 +20,28 @@ function storage (cmd, source, branch, data, next) {
 		}
 	}
 
-	storage.engine[cmd](source, branch, data, next)
+	if (!storage.engine[cmd]) {
+		throw Error('Method "' + cmd +'" not implemented in storage engine "' + storage.settings.engine +'"')
+	}
 
+	storage.engine[cmd](source, branch, data, next);
 
+	return storage;
 }
 
 storage.settings = {
 	engine: 'none'
 }
 
-
-
+/**
+ *
+ * @param engine
+ *
+ * @returns {storage}
+ */
 storage.use = function (engine) {
 	storage.settings.engine = engine;
-
 	return storage;
 }
 
-
-
-
-
-
-
-
-
 module.exports = storage;
-
-
-
-/*
-
-
- request.server.methods.storage(
- 'getmap',
- moduleRequest.source,
- moduleRequest.stage,
- modulelist,
- onMapResult.bind(null, request, reply, moduleRequest)
- )
-
- storage.hmget(
- ['map', moduleRequest.source, moduleRequest.stage].join(':'),
- modulelist,
- onMapResult
- .bind(null, request, reply, moduleRequest)
- );
-
- */
