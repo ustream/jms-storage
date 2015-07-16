@@ -6,6 +6,7 @@
   "author": "nec@ustream.tv",
   "license": "MIT",
   "dependencies": {
+	"redis": "latest",
     "minimist": "latest"
   },
   "devDependencies": {
