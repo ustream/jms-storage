@@ -5,7 +5,6 @@
  */
 function storage (storageConfig, logUtil) {
 
-
 	if (!storage.engine) {
 
 		var config = {};
@@ -27,9 +26,22 @@ function storage (storageConfig, logUtil) {
 		try {
 			storage.engine = require('./lib/' + storage.settings.engine)(config, log)
 		} catch (e) {
-			throw Error('No storage engine for "' + storage.settings.engine +'"')
+			if (e.code && e.code === 'MODULE_NOT_FOUND') {
+				throw Error('No storage engine for "' + storage.settings.engine +'"')
+			}
+			throw e;
 		}
+
+		if (typeof arguments[0] === 'string') {
+			// init through first invocation
+			storage.apply(this, arguments);
+		}
+
+		return storage;
+	} else if (storage.engine && typeof arguments[0] !== 'string') {
+		return storage;
 	}
+
 
 	var cmd = arguments[0],
 		source = arguments[1],
@@ -62,5 +74,7 @@ storage.use = function (engine) {
 	storage.settings.engine = engine;
 	return storage;
 }
+
+
 
 module.exports = storage;
