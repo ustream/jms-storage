@@ -18,7 +18,7 @@ function storage (storageConfig, logUtil) {
 		var log = function () {};
 
 		if (this.log) {
-			log = this.log;
+			log = this.log.bind(this);
 		} else if (logUtil) {
 			log = logUtil
 		}
