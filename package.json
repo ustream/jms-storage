@@ -1,7 +1,7 @@
 {
   "name": "jms-storage",
   "main": "./jms-storage.js",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Storage engine wrapper for JMS",
   "author": "nec@ustream.tv",
   "license": "MIT",
