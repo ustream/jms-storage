@@ -24,7 +24,7 @@ function storage (storageConfig, logUtil) {
 		}
 
 		try {
-			storage.engine = require('./lib/' + storage.settings.engine)(config, log)
+			storage.engine = require('./lib/' + storage.settings.engine)(config[storage.settings.engine], log)
 		} catch (e) {
 			if (e.code && e.code === 'MODULE_NOT_FOUND') {
 				throw Error('No storage engine for "' + storage.settings.engine +'"')

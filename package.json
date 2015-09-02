@@ -10,8 +10,14 @@
     "minimist": "latest"
   },
   "devDependencies": {
+    "chai": "latest",
+    "grunt": "latest",
     "grunt-release": "latest",
-    "grunt": "latest"
+    "mocha": "latest",
+    "object-assign": "^4.0.1",
+    "pre-commit": "latest",
+    "rewire": "latest",
+    "sinon": "latest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +25,12 @@
   },
   "engines": {
     "node": ">= 0.10"
-  }
+  },
+  "scripts": {
+    "test": "env NODE_CONTEXT=test mocha --ui tdd tests/*.js",
+    "cover": "istanbul cover node_modules/.bin/_mocha -- --ui tdd tests/**/*.js;open coverage/lcov-report/index.html"
+  },
+  "pre-commit": [
+    "test"
+  ]
 }
