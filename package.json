@@ -28,7 +28,7 @@
   },
   "scripts": {
     "test": "env NODE_CONTEXT=test mocha --ui tdd tests/*.js",
-    "cover": "istanbul cover node_modules/.bin/_mocha -- --ui tdd tests/**/*.js;open coverage/lcov-report/index.html"
+    "cover": "istanbul cover node_modules/.bin/_mocha -- --ui tdd tests/*.js;open coverage/lcov-report/index.html"
   },
   "pre-commit": [
     "test"
