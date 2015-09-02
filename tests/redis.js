@@ -37,7 +37,7 @@ suite('redis storage lib', function () {
 	});
 
 
-	test('createClient', function () {
+	test('redis createClient', function () {
 
 		var storage = storagelib({
 			port: 6379,
@@ -61,7 +61,7 @@ suite('redis storage lib', function () {
 		)
 	});
 
-	test('select', function () {
+	test('redis select', function () {
 		var storage = storagelib({
 			port: 6379,
 			host: '127.0.0.1',
